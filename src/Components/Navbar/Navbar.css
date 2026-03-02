@@ -1,0 +1,123 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px auto;
+    padding: 0 40px;
+    max-width: 1200px;
+    position: relative;
+}
+
+.navbar h1{
+    font-size: 32px;
+    background: linear-gradient(270deg, #DF8908 10%, #B415FF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 50px;
+    font-size: 20px;
+}
+
+.nav-menu li{
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.nav-menu li:hover{
+    text-decoration: underline;
+    text-decoration-color: rgb(203, 53, 126);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+    transform: scale(1.1);
+}
+
+.anchor-link{
+    text-decoration: none;
+    color: white;
+}
+
+.nav-connect{
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: linear-gradient(267deg, #DA7C25 0.36%, #B923E1 102.06%);
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.nav-connect:hover{
+    transform: scale(1.05);
+}
+
+/* Mobile icons */
+.nav-mob-close{
+    display: none;
+}
+
+.nav-mob-open{
+    display: none;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width: 768px){
+
+    .navbar{
+        padding: 0 20px;
+        margin: 15px;
+    }
+
+    .nav-connect{
+        display: none;
+    }
+
+    .nav-mob-open{
+        display: block;
+        cursor: pointer;
+        width: 28px;
+        z-index: 12;
+    }
+
+    .nav-mob-close{
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 26px;
+        cursor: pointer;
+        z-index: 13;
+    }
+
+    .nav-menu{
+        position: fixed;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 70px 30px;
+        top: 0;
+        right: -100%;
+        gap: 30px;
+        background-color: #1F0016;
+        width: 75%;
+        max-width: 260px;
+        height: 100vh;
+        z-index: 11;
+        transition: right 0.3s ease-in-out;
+        box-shadow: -5px 0 20px rgba(0,0,0,0.4);
+    }
+
+    /* When menu is open */
+    .nav-menu.open{
+        right: 0;
+    }
+
+    .nav-menu li{
+        font-size: 22px;
+        width: 100%;
+    }
+}

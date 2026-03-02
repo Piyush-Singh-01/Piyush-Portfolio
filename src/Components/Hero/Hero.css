@@ -1,0 +1,98 @@
+.hero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto; /* centers whole hero */
+    padding: 20px;
+}
+
+/* Circular Profile Image */
+.hero img{
+    margin-top: 80px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%; /* makes circle */
+    object-fit: cover;
+    border: 4px solid #B415FF; /* optional glow border */
+}
+
+/* Heading perfectly centered */
+.hero h1{
+    font-size: 42px;
+    width: 100%; /* full width so text stays centered */
+    line-height: 1.2;
+}
+
+.hero h1 span{
+  background: linear-gradient(270deg, #DF8908 10%, #B415FF 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p{
+    font-size: 22px;
+    max-width: 600px; /* keeps paragraph readable */
+}
+
+.hero-action{
+    display: flex;
+    align-items: center;
+    justify-content: center; /* center buttons */
+    gap: 20px;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.hero-connect{
+    padding: 14px 30px;
+    border-radius: 40px;
+    background: linear-gradient(264deg, #DF8908 -5.09%, #B415FF 100%);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero-resume{
+    padding: 14px 35px;
+    border-radius: 40px;
+    border: 2px solid #FFF;
+    cursor: pointer;
+    background: transparent;
+    color: white;
+    transition: 0.3s;
+}
+
+.hero-connect:hover{
+   border: 2px solid white;   
+}
+
+.hero-resume:hover{
+    border-color: #B415FF;
+}
+
+/* Mobile */
+@media(max-width: 480px){
+   .hero img{
+        width: 170px;
+        height: 170px;
+        margin-top: 50px;
+   }
+
+   .hero h1{
+        font-size: 30px;
+   }
+
+   .hero p{
+        font-size: 18px;
+        padding: 0 10px;
+   }
+
+   .hero-action{
+        flex-direction: column; /* stack buttons */
+        gap: 15px;
+   }
+}
