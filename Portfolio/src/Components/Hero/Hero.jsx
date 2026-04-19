@@ -1,11 +1,11 @@
 import React from 'react'
 import './Hero.css'
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import resume from '../../../public/Resume.pdf'
+// import resume from '../../../public/Resume.pdf'
 import profile_image from '../../assets/profile.png';
 export default function Hero() {
    const handleResume = ()=>{
-      window.open("/resume", "_blank");
+      window.open("/RESUME.pdf", "_blank");
    }
   return (
     <div id='home' className="hero">
