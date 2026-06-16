@@ -42,8 +42,8 @@ function About() {
          </div>
          <div className="about-achievements">
             <div className="about-achievement">
-                <h1>4+</h1>
-                <p>Months of Focused Learning</p>
+                <h1>2+</h1>
+                <p>Months of Experience</p>
             </div><hr/>
             <div className="about-achievement">
                 <h1>5+</h1>
