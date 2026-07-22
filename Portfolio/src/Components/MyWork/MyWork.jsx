@@ -18,7 +18,7 @@ const mywork_data = [
     w_name: "AI Virtual Assistant",
     w_desc: "Voice-based AI assistant built with JavaScript and APIs to perform tasks and answer queries.",
     w_img: ai_assistant,
-    w_link: "https://piyush-ai-virtual-assistance.onrender.com"
+    w_link: "https://ai-virtual-assistance-five.vercel.app"
   },
   {
     w_no: 2,
