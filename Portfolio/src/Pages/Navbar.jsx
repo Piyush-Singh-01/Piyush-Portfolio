@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-
-import menu_open from "../assets/menu_open.svg";
-import menu_close from "../assets/menu_close.svg";
+import { HiMenuAlt3, HiX } from "react-icons/hi";
 
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
-  { id: "work", label: "Project" },
+  { id: "work", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   const [menu, setMenu] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -22,6 +21,15 @@ export default function Navbar() {
     setMenu(section);
     closeMenu();
   };
+
+  // Track scroll for navbar background
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Close menu on Escape
   useEffect(() => {
@@ -75,27 +83,42 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full animate-[fadeDown_0.7s_ease-out]">
-      {/* Blur + background live on their own layer, NOT on <nav>,
-          so they don't trap the fixed-position drawer. */}
+    <header
+      className={`sticky top-0 z-50 w-full animate-[fadeDown_0.7s_ease-out] transition-all duration-500 ${
+        scrolled
+          ? "shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+          : ""
+      }`}
+    >
+      {/* Glass background */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-black/90 backdrop-blur-md"
+        className={`absolute inset-0 -z-10 transition-all duration-500 ${
+          scrolled
+            ? "bg-[#0a0a0f]/85 backdrop-blur-xl border-b border-white/[0.04]"
+            : "bg-transparent"
+        }`}
       />
 
       <nav
         aria-label="Main navigation"
-        className="relative w-full max-w-[1200px] mx-auto min-h-[75px] px-5 sm:px-7 lg:px-10 flex items-center justify-between"
+        className="relative w-full max-w-[1200px] mx-auto min-h-[72px] px-5 sm:px-7 lg:px-10 flex items-center justify-between"
       >
         {/* Logo */}
         <a
           href="#home"
           onClick={() => handleMenuClick("home")}
           aria-label="Piyush Singh - Home"
-          className="no-underline shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B415FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+          className="no-underline shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a855f7] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0f] group"
         >
-          <h1 className="text-[28px] sm:text-[30px] lg:text-[32px] font-bold m-0 whitespace-nowrap bg-gradient-to-r from-[#B415FF] to-[#DF8908] bg-clip-text text-transparent">
-            PIYUSH
+          <h1
+            className="text-[26px] sm:text-[28px] lg:text-[30px] font-bold m-0 whitespace-nowrap tracking-tight"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            <span className="bg-gradient-to-r from-[#a855f7] via-[#6366f1] to-[#ec4899] bg-clip-text text-transparent bg-[length:200%_auto] group-hover:animate-[shimmer_3s_ease-in-out_infinite] transition-all duration-300">
+              PIYUSH
+            </span>
+            <span className="text-white/30 font-light ml-1">.</span>
           </h1>
         </a>
 
@@ -107,9 +130,9 @@ export default function Navbar() {
             aria-label="Open navigation menu"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-navigation"
-            className="block lg:hidden cursor-pointer p-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B415FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+            className="block lg:hidden cursor-pointer p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/[0.06] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a855f7]"
           >
-            <img src={menu_open} alt="" className="w-7 h-7" />
+            <HiMenuAlt3 className="w-7 h-7" />
           </button>
         )}
 
@@ -119,7 +142,7 @@ export default function Navbar() {
             type="button"
             aria-label="Close navigation menu backdrop"
             onClick={closeMenu}
-            className="fixed inset-0 w-full h-dvh bg-black/60 z-40 lg:hidden cursor-default border-none outline-none"
+            className="fixed inset-0 w-full h-dvh bg-black/70 backdrop-blur-sm z-40 lg:hidden cursor-default border-none outline-none"
           />
         )}
 
@@ -127,10 +150,10 @@ export default function Navbar() {
         <div
           id="mobile-navigation"
           className={`
-            fixed top-0 right-0 z-50 h-dvh w-[75%] max-w-[300px] px-[30px] pt-[85px]
-            bg-[#1F0016] shadow-[-5px_0_25px_rgba(0,0,0,0.5)]
-            transition-[transform,visibility] duration-300 ease-in-out
-            lg:static lg:h-auto lg:w-auto lg:max-w-none lg:p-0 lg:bg-transparent lg:shadow-none
+            fixed top-0 right-0 z-50 h-dvh w-[80%] max-w-[320px] px-[30px] pt-[90px]
+            bg-[#0f0f18]/95 backdrop-blur-2xl border-l border-white/[0.06]
+            transition-[transform,visibility] duration-400 ease-[cubic-bezier(0.32,0.72,0,1)]
+            lg:static lg:h-auto lg:w-auto lg:max-w-none lg:p-0 lg:bg-transparent lg:border-none lg:backdrop-blur-none
             lg:translate-x-0 lg:visible
             ${isMenuOpen ? "translate-x-0 visible" : "translate-x-full invisible"}
           `}
@@ -140,30 +163,32 @@ export default function Navbar() {
             type="button"
             onClick={closeMenu}
             aria-label="Close navigation menu"
-            className="block lg:hidden absolute top-5 right-5 cursor-pointer p-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B415FF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1F0016]"
+            className="block lg:hidden absolute top-5 right-5 cursor-pointer p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/[0.06] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a855f7]"
           >
-            <img src={menu_close} alt="" className="w-5 h-5" />
+            <HiX className="w-6 h-6" />
           </button>
 
-          <ul className="flex flex-col items-start gap-[28px] lg:flex-row lg:items-center lg:gap-[32px] list-none m-0 p-0 text-[18px]">
+          <ul className="flex flex-col items-start gap-[24px] lg:flex-row lg:items-center lg:gap-[8px] list-none m-0 p-0">
             {NAV_ITEMS.map((item) => {
               const isActive = menu === item.id;
 
               return (
                 <li
                   key={item.id}
-                  className="w-full lg:w-auto cursor-pointer transition-transform duration-300 hover:scale-105"
+                  className="w-full lg:w-auto"
                 >
                   <AnchorLink
                     href={`#${item.id}`}
                     offset={80}
                     onClick={() => handleMenuClick(item.id)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`no-underline text-white block w-fit text-[20px] lg:text-[18px] transition-all duration-300 rounded-sm hover:text-[#DF8908] hover:underline hover:decoration-[#CB357E] hover:decoration-2 hover:underline-offset-[5px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B415FF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1F0016] ${
-                      isActive
-                        ? "underline decoration-[#CB357E] decoration-2 underline-offset-[5px] font-medium"
-                        : ""
-                    }`}
+                    className={`no-underline block w-fit text-[17px] lg:text-[15px] font-medium px-3 py-2 rounded-lg transition-all duration-300
+                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a855f7]
+                      ${
+                        isActive
+                          ? "text-[#a855f7] bg-[#a855f7]/[0.08]"
+                          : "text-white/60 hover:text-white hover:bg-white/[0.04]"
+                      }`}
                   >
                     {item.label}
                   </AnchorLink>
@@ -178,9 +203,15 @@ export default function Navbar() {
           href="#contact"
           offset={80}
           onClick={() => setMenu("contact")}
-          className="hidden lg:block shrink-0 px-5 py-2.5 rounded-[50px] bg-gradient-to-r from-[#B923E1] to-[#DA7C25] text-[17px] text-white no-underline whitespace-nowrap transition-all duration-300 ease-in-out hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B415FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+          className="hidden lg:flex items-center gap-2 shrink-0 px-5 py-2.5 rounded-full text-[14px] font-semibold text-white no-underline whitespace-nowrap tracking-wide uppercase transition-all duration-400 ease-out
+            bg-gradient-to-r from-[#a855f7] to-[#6366f1] hover:from-[#9333ea] hover:to-[#4f46e5]
+            hover:shadow-[0_8px_30px_rgba(168,85,247,0.3)] hover:scale-105
+            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a855f7] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0f]"
         >
-          Connect with me
+          <span>Let's Talk</span>
+          <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </AnchorLink>
       </nav>
     </header>

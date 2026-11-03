@@ -1,99 +1,118 @@
 import React from "react";
 import { FaWhatsapp, FaLinkedin, FaGithub } from "react-icons/fa";
+import { HiHeart } from "react-icons/hi";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+
+const FOOTER_LINKS = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "services", label: "Services" },
+  { id: "work", label: "Projects" },
+  { id: "contact", label: "Contact" },
+];
+
+const SOCIALS = [
+  {
+    icon: FaWhatsapp,
+    label: "WhatsApp",
+    href: "https://wa.me/919939606075",
+  },
+  {
+    icon: FaLinkedin,
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/piyush-singh-b94203319",
+  },
+  {
+    icon: FaGithub,
+    label: "GitHub",
+    href: "https://github.com/Piyush-Singh-01",
+  },
+];
 
 function Footer() {
   return (
-    <footer className="max-w-[1200px] mx-auto mt-[80px] mb-[30px] px-5 animate-[fadeUp_0.8s_ease-out]">
-      
-      {/*  TOP  */}
-      <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-10 text-center md:text-left">
-        
-        {/* LEFT */}
-        <div>
-          <h1 className="text-[32px] font-semibold bg-gradient-to-r from-[#B415FF] to-[#DF8908] bg-clip-text text-transparent">
-            PIYUSH SINGH
-          </h1>
+    <footer className="relative mt-10">
+      {/* Top gradient line */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-[#a855f7]/20 to-transparent" />
 
-          <p className="mt-2 text-[16px] leading-[26px] text-[#cfcfcf] max-w-[420px]">
-            Full Stack Developer passionate about building modern,
-            scalable web applications using the MERN stack and AI integrations.
-            Experienced in developing responsive, user-focused applications
-            and currently seeking a full-time Full Stack Developer opportunity.
-          </p>
-        </div>
-
-        {/* RIGHT - Social Links */}
-        <div>
-          <div className="flex items-center justify-center gap-5 text-[26px]">
-            {/* WhatsApp */}
-            <a
-              href="https://wa.me/919939606075"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="text-white transition-all duration-300 hover:scale-110 hover:text-[#B415FF]"
+      <div className="max-w-[1200px] mx-auto px-5 py-12">
+        {/* Main footer content */}
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-10">
+          {/* Left — Brand */}
+          <div className="text-center md:text-left max-w-[400px]">
+            <h2
+              className="text-[28px] font-bold tracking-tight"
+              style={{ fontFamily: "var(--font-heading)" }}
             >
-              <FaWhatsapp />
-            </a>
+              <span className="bg-gradient-to-r from-[#a855f7] via-[#6366f1] to-[#ec4899] bg-clip-text text-transparent">
+                PIYUSH SINGH
+              </span>
+              <span className="text-white/20 font-light ml-1">.</span>
+            </h2>
+            <p className="mt-3 text-[14px] leading-[1.8] text-[#6b6b80]">
+              Full Stack Developer passionate about building modern,
+              scalable web applications using the MERN stack.
+            </p>
+          </div>
 
-            {/* LinkedIn */}
-            <a
-              href="https://linkedin.com/in/piyush-singh-b94203319"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="text-white transition-all duration-300 hover:scale-110 hover:text-[#B415FF]"
-            >
-              <FaLinkedin />
-            </a>
+          {/* Center — Quick links */}
+          <div className="text-center">
+            <p className="text-[12px] font-semibold tracking-[0.15em] uppercase text-[#6b6b80] mb-4">
+              Quick Links
+            </p>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+              {FOOTER_LINKS.map((link) => (
+                <AnchorLink
+                  key={link.id}
+                  href={`#${link.id}`}
+                  offset={80}
+                  className="text-[14px] text-[#a1a1b5] hover:text-white no-underline transition-colors duration-300"
+                >
+                  {link.label}
+                </AnchorLink>
+              ))}
+            </div>
+          </div>
 
-            {/* GitHub */}
-            <a
-              href="https://github.com/Piyush-Singh-01"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="text-white transition-all duration-300 hover:scale-110 hover:text-[#B415FF]"
-            >
-              <FaGithub />
-            </a>
+          {/* Right — Socials */}
+          <div className="text-center md:text-right">
+            <p className="text-[12px] font-semibold tracking-[0.15em] uppercase text-[#6b6b80] mb-4">
+              Connect
+            </p>
+            <div className="flex items-center justify-center md:justify-end gap-3">
+              {SOCIALS.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="flex items-center justify-center w-9 h-9 rounded-lg border border-white/[0.06] bg-white/[0.02] text-[#6b6b80] hover:text-white hover:border-[#a855f7]/30 hover:bg-[#a855f7]/[0.06] transition-all duration-300"
+                  >
+                    <Icon className="w-[15px] h-[15px]" />
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Divider */}
-      <hr className="my-[30px] border-0 h-px bg-[#333]" />
+        {/* Divider */}
+        <div className="w-full h-px bg-white/[0.04] my-8" />
 
-      {/*  BOTTOM  */}
-      <div className="flex flex-col md:flex-row justify-between items-center gap-3 text-center md:text-left text-[14px] text-[#aaa] pb-[10px]">
-        
-        {/* Copyright */}
-        <p>
-          © {new Date().getFullYear()} Piyush Singh. All rights reserved.
-        </p>
+        {/* Bottom bar */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 text-[13px] text-[#6b6b80]">
+          <p className="flex items-center gap-1.5">
+            © {new Date().getFullYear()} Piyush Singh. Built with
+            <HiHeart className="w-3.5 h-3.5 text-[#ec4899] inline" />
+          </p>
 
-        {/* Footer Links */}
-        <div className="flex flex-wrap justify-center items-center gap-5">
-          <a
-            href="#"
-            className="cursor-pointer transition-colors duration-300 hover:text-white no-underline text-[#aaa]"
-          >
-            Terms of Service
-          </a>
-
-          <a
-            href="#"
-            className="cursor-pointer transition-colors duration-300 hover:text-white no-underline text-[#aaa]"
-          >
-            Privacy Policy
-          </a>
-
-          <a
-            href="#contact"
-            className="cursor-pointer transition-colors duration-300 hover:text-white no-underline text-[#aaa]"
-          >
-            Contact
-          </a>
+          <div className="flex items-center gap-1.5">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#22c55e] animate-pulse" />
+            <span>Available for opportunities</span>
+          </div>
         </div>
       </div>
     </footer>

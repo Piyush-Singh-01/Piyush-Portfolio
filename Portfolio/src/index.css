@@ -1,11 +1,87 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════
+   DESIGN SYSTEM — Premium Dark Portfolio
+   ═══════════════════════════════════════════════════════════ */
 
-body{
-  background-color: black;
-  color: white;
-  font-family: 'outfit';
+:root {
+  /* Core palette */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #111118;
+  --bg-card: #14141d;
+  --bg-card-hover: #1a1a26;
+
+  /* Accent gradients */
+  --accent-1: #a855f7;
+  --accent-2: #6366f1;
+  --accent-3: #ec4899;
+  --accent-4: #f59e0b;
+
+  /* Text */
+  --text-primary: #f1f1f5;
+  --text-secondary: #a1a1b5;
+  --text-muted: #6b6b80;
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(168, 85, 247, 0.4);
+
+  /* Shadows */
+  --shadow-glow: 0 0 60px rgba(168, 85, 247, 0.08);
+  --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.4);
+
+  /* Fonts */
+  --font-heading: 'Outfit', 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
+
+/* ═══════ Global Reset & Base ═══════ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ═══════ Custom Scrollbar ═══════ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-1), var(--accent-2));
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--accent-3), var(--accent-1));
+}
+
+/* ═══════ Selection styling ═══════ */
+::selection {
+  background-color: rgba(168, 85, 247, 0.3);
+  color: white;
+}
+
+/* ═══════ Keyframe Animations ═══════ */
 
 /* Fade + slide up */
 @keyframes fadeUp {
@@ -67,18 +143,111 @@ body{
   }
 
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-12px);
   }
 }
 
-/* Glow */
+/* Glow pulse */
 @keyframes glow {
   0%,
   100% {
-    box-shadow: 0 0 0 rgba(180, 21, 255, 0);
+    box-shadow: 0 0 0 rgba(168, 85, 247, 0);
   }
 
   50% {
-    box-shadow: 0 0 25px rgba(180, 21, 255, 0.35);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
   }
+}
+
+/* Gradient text shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Rotating border animation */
+@keyframes rotateBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pulse ring */
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+/* Particle drift */
+@keyframes drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(30px, -20px) scale(1.1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-10px, -40px) scale(0.9);
+    opacity: 0.2;
+  }
+  75% {
+    transform: translate(-30px, -10px) scale(1.05);
+    opacity: 0.4;
+  }
+}
+
+/* Skill bar fill */
+@keyframes fillBar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--bar-width);
+  }
+}
+
+/* Typewriter cursor blink */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Scale in */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Gradient border rotation */
+@keyframes borderRotate {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
 }

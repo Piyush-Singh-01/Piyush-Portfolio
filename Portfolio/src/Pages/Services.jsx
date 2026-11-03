@@ -1,104 +1,137 @@
 import React from "react";
-import theme_pattern from "../assets/theme_pattern.svg";
+import { HiCode, HiDeviceMobile, HiServer, HiLightningBolt, HiColorSwatch, HiCog } from "react-icons/hi";
 import useScrollAnimation from "../hooks/useScrollAnimation";
 
 const SERVICES_DATA = [
   {
-    s_no: "01",
+    icon: HiCode,
     s_name: "Frontend Development",
     s_desc:
-      "Building responsive and interactive UI using HTML, CSS, JavaScript and React.",
+      "Building responsive and interactive UIs using HTML, CSS, JavaScript, and React with modern design patterns.",
+    gradient: "from-[#a855f7] to-[#6366f1]",
   },
   {
-    s_no: "02",
+    icon: HiDeviceMobile,
     s_name: "Responsive Web Design",
     s_desc:
-      "Creating mobile-friendly and fully responsive websites for all screen sizes.",
+      "Creating mobile-friendly, fully responsive websites that look great on all screen sizes and devices.",
+    gradient: "from-[#6366f1] to-[#3b82f6]",
   },
   {
-    s_no: "03",
+    icon: HiServer,
     s_name: "MERN Stack Development",
     s_desc:
-      "Developing full-stack web applications using MongoDB, Express, React and Node.js.",
+      "Developing full-stack web applications using MongoDB, Express, React, and Node.js with clean architecture.",
+    gradient: "from-[#ec4899] to-[#a855f7]",
   },
   {
-    s_no: "04",
+    icon: HiLightningBolt,
     s_name: "API Integration",
     s_desc:
-      "Integrating REST APIs and handling dynamic data with asynchronous JavaScript.",
+      "Integrating REST APIs and handling dynamic data with asynchronous JavaScript and modern fetch patterns.",
+    gradient: "from-[#f59e0b] to-[#ef4444]",
   },
   {
-    s_no: "05",
+    icon: HiColorSwatch,
     s_name: "UI Implementation",
     s_desc:
-      "Converting Figma/Design files into pixel-perfect, functional web interfaces.",
+      "Converting Figma and design files into pixel-perfect, functional web interfaces with attention to detail.",
+    gradient: "from-[#10b981] to-[#3b82f6]",
   },
   {
-    s_no: "06",
+    icon: HiCog,
     s_name: "Performance Optimization",
     s_desc:
-      "Improving application speed, code splitting and optimizing React components.",
+      "Improving application speed, implementing code splitting, and optimizing React component rendering.",
+    gradient: "from-[#a855f7] to-[#ec4899]",
   },
 ];
 
 export default function Services() {
-  const [servicesRef, servicesVisible] = useScrollAnimation();
+  const [titleRef, titleVisible] = useScrollAnimation();
+  const [gridRef, gridVisible] = useScrollAnimation();
 
   return (
     <section
       id="services"
-      className="flex flex-col items-center gap-[60px] my-[80px] mx-auto max-w-[1200px] px-5"
+      className="relative py-[100px] px-5 max-w-[1200px] mx-auto"
     >
-      {/* Title */}
-      <div className="relative">
-        <h1 className="text-[32px] md:text-[42px] font-semibold text-center text-white">
-          My Skills & Expertise
-        </h1>
-        <img
-          src={theme_pattern}
-          alt=""
-          aria-hidden="true"
-          className="absolute bottom-[-10px] right-[-20px] -z-10"
-        />
+      {/* Background accent */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#a855f7]/[0.03] rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Section heading */}
+      <div
+        ref={titleRef}
+        className={`text-center mb-16 transition-all duration-700 ease-out ${
+          titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+      >
+        <p
+          className="text-[13px] font-semibold tracking-[0.2em] uppercase text-[#a855f7] mb-3"
+          style={{ fontFamily: "var(--font-mono)" }}
+        >
+          What I Do
+        </p>
+        <h2
+          className="text-[36px] sm:text-[44px] md:text-[52px] font-bold tracking-tight"
+          style={{ fontFamily: "var(--font-heading)" }}
+        >
+          <span className="bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
+            Skills & Expertise
+          </span>
+        </h2>
+        <p className="mt-4 text-[16px] sm:text-[17px] text-[#a1a1b5] max-w-[560px] mx-auto leading-[1.7]">
+          I specialize in building modern web applications with clean code
+          and exceptional user experiences.
+        </p>
       </div>
 
       {/* Services Grid */}
       <div
-        ref={servicesRef}
-        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] w-full transition-all duration-700 ease-out ${
-          servicesVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-10"
-        }`}
+        ref={gridRef}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
       >
-        {SERVICES_DATA.map((service, index) => (
-          <div
-            key={service.s_no}
-            style={{
-              transitionDelay: servicesVisible ? `${index * 100}ms` : "0ms",
-            }}
-            className={`flex flex-col justify-between gap-[15px] p-[30px] rounded-[15px] border-2 border-[#333] bg-[#111] cursor-pointer transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.04] hover:border-[#ff00ff] hover:bg-gradient-to-br hover:from-[#3f0028] hover:to-[#582300] ${
-              servicesVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
-          >
-            {/* Number */}
-            <h3 className="text-[20px] text-[#B415FF] font-medium">
-              {service.s_no}
-            </h3>
+        {SERVICES_DATA.map((service, index) => {
+          const Icon = service.icon;
+          return (
+            <div
+              key={service.s_name}
+              style={{
+                transitionDelay: gridVisible ? `${index * 100}ms` : "0ms",
+              }}
+              className={`group relative p-7 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm
+                cursor-default transition-all duration-500 ease-out
+                hover:border-[#a855f7]/20 hover:bg-white/[0.04] hover:-translate-y-1
+                hover:shadow-[0_20px_60px_rgba(168,85,247,0.08)]
+                ${gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            >
+              {/* Icon */}
+              <div
+                className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${service.gradient} p-[1px] mb-5`}
+              >
+                <div className="flex items-center justify-center w-full h-full rounded-[11px] bg-[#0a0a0f] group-hover:bg-[#111118] transition-colors duration-300">
+                  <Icon className="w-5 h-5 text-[#a855f7] group-hover:text-white transition-colors duration-300" />
+                </div>
+              </div>
 
-            {/* Service Name */}
-            <h2 className="text-[26px] font-semibold text-white">
-              {service.s_name}
-            </h2>
+              {/* Title */}
+              <h3
+                className="text-[19px] sm:text-[20px] font-bold text-white/90 mb-3 group-hover:text-white transition-colors duration-300"
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
+                {service.s_name}
+              </h3>
 
-            {/* Description */}
-            <p className="text-[16px] leading-[24px] text-[#d0d0d0]">
-              {service.s_desc}
-            </p>
-          </div>
-        ))}
+              {/* Description */}
+              <p className="text-[14px] sm:text-[15px] leading-[1.7] text-[#a1a1b5] group-hover:text-[#c0c0d0] transition-colors duration-300">
+                {service.s_desc}
+              </p>
+
+              {/* Hover gradient line at bottom */}
+              <div className={`absolute bottom-0 left-7 right-7 h-[2px] rounded-full bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-40 transition-opacity duration-500`} />
+            </div>
+          );
+        })}
       </div>
     </section>
   );
