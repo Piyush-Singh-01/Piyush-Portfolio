@@ -116,9 +116,9 @@ export default function Navbar() {
             style={{ fontFamily: "var(--font-heading)" }}
           >
             <span className="bg-gradient-to-r from-[#a855f7] via-[#6366f1] to-[#ec4899] bg-clip-text text-transparent bg-[length:200%_auto] group-hover:animate-[shimmer_3s_ease-in-out_infinite] transition-all duration-300">
-              PIYUSH
+              PIYUSH SINGH
             </span>
-            <span className="text-white/30 font-light ml-1">.</span>
+            {/* <span className="text-white/30 font-light ml-1">.</span> */}
           </h1>
         </a>
 

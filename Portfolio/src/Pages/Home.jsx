@@ -126,11 +126,11 @@ export default function Home() {
           Hello, I'm
         </p>
         <h1
-          className="text-[38px] sm:text-[52px] md:text-[64px] font-extrabold leading-[1.1] tracking-tight"
+          className="text-[35px] sm:text-[50px] md:text-[60px] font-bold leading-[1.1] tracking-tight"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           <span className="bg-gradient-to-r from-white via-white to-white/70 bg-clip-text text-transparent">
-            Piyush Singh
+            PIYUSH SINGH
           </span>
         </h1>
       </div>

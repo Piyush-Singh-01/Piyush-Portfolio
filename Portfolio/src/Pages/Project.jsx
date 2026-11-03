@@ -15,7 +15,7 @@ const MY_WORK_DATA = [
       "Voice-based AI assistant built with JavaScript and APIs to perform tasks and answer queries.",
     w_img: ai_assistant,
     w_link: "https://piyush-ai-virtual-assistance.onrender.com",
-    w_tags: ["React", "API", "Gemini API"],
+    w_tags: ["React", "Rest API", "Gemini API"],
   },
   {
     w_no: 2,
@@ -33,7 +33,7 @@ const MY_WORK_DATA = [
       "Full-stack recruitment platform for managing job postings, applicants, recruitment workflows, and hiring activities.",
     w_img: Applicant_Tracking,
     w_link: "",
-    w_tags: ["MERN", "Dashboard", "Full Stack"],
+    w_tags: ["MERN", "TanStack Query", "Pdf-Parse", "Puppeteer"],
   },
   {
     w_no: 4,
@@ -51,7 +51,7 @@ const MY_WORK_DATA = [
       "AI-powered chat application using the OpenAI API with a responsive conversational interface and real-time interactions.",
     w_img: chatgpt_clone,
     w_link: "https://piyush-singh-01.github.io/PIYUSH-GPT/",
-    w_tags: ["React", "OpenAI", "AI"],
+    w_tags: ["React", "Gemini API", "Tailwind CSS"],
   },
   {
     w_no: 6,
