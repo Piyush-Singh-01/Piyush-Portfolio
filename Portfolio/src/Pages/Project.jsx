@@ -40,7 +40,7 @@ const MY_WORK_DATA = [
     w_name: "Movie Guide App",
     w_desc:
       "React-based movie discovery app with API integration to search films and explore ratings, trailers, and details.",
-    w_img: movie_ap,
+    w_img: movie_app,
     w_link: "https://piyush-singh-01.github.io/Movie-Guide/",
     w_tags: ["React", "API", "CSS"],
   },
