@@ -212,7 +212,7 @@ export default function Home() {
           <FaGithub className="w-[18px] h-[18px]" />
         </a>
         <a
-          href="https://linkedin.com/in/piyush-singh-b94203319"
+          href="https://linkedin.com/in/piyush-singh-p9939"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"

@@ -20,7 +20,7 @@ const SOCIALS = [
   {
     icon: FaLinkedin,
     label: "LinkedIn",
-    href: "https://linkedin.com/in/piyush-singh-b94203319",
+    href: "https://linkedin.com/in/piyush-singh-p9939",
   },
   {
     icon: FaGithub,
@@ -47,7 +47,7 @@ function Footer() {
               <span className="bg-gradient-to-r from-[#a855f7] via-[#6366f1] to-[#ec4899] bg-clip-text text-transparent">
                 PIYUSH SINGH
               </span>
-              <span className="text-white/20 font-light ml-1">.</span>
+              {/* <span className="text-white/20 font-light ml-1">.</span> */}
             </h2>
             <p className="mt-3 text-[14px] leading-[1.8] text-[#6b6b80]">
               Full Stack Developer passionate about building modern,

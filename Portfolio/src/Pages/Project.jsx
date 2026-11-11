@@ -32,7 +32,7 @@ const MY_WORK_DATA = [
     w_desc:
       "Full-stack recruitment platform for managing job postings, applicants, recruitment workflows, and hiring activities.",
     w_img: Applicant_Tracking,
-    w_link: "",
+    w_link: "https://hire-track-delta-three.vercel.app/",
     w_tags: ["MERN", "TanStack Query", "Pdf-Parse", "Puppeteer"],
   },
   {
@@ -40,7 +40,7 @@ const MY_WORK_DATA = [
     w_name: "Movie Guide App",
     w_desc:
       "React-based movie discovery app with API integration to search films and explore ratings, trailers, and details.",
-    w_img: movie_app,
+    w_img: movie_ap,
     w_link: "https://piyush-singh-01.github.io/Movie-Guide/",
     w_tags: ["React", "API", "CSS"],
   },

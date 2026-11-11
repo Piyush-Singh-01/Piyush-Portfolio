@@ -3,16 +3,16 @@ import useScrollAnimation from "../hooks/useScrollAnimation";
 import { HiCode, HiLightningBolt, HiGlobe } from "react-icons/hi";
 
 const SKILLS = [
-  { name: "React / Next.js", percent: 90 },
+  { name: "React / Next.js", percent: 80 },
   { name: "JavaScript / TypeScript", percent: 85 },
   { name: "Node.js / Express", percent: 85 },
   { name: "HTML & CSS", percent: 95 },
   { name: "MongoDB / MySQL", percent: 80 },
-  { name: "DSA / Problem Solving", percent: 75 },
+  { name: "DSA / Problem Solving", percent: 70 },
 ];
 
 const STATS = [
-  { value: "4+", label: "Months Experience", icon: HiLightningBolt },
+  { value: "4+", label: "Months of Internship Experience", icon: HiLightningBolt },
   { value: "5+", label: "MERN Projects", icon: HiCode },
   { value: "5+", label: "Live Deployments", icon: HiGlobe },
 ];
